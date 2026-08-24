@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<title>Painel de Controle — Sensor Virtual</title>
+<style>
+html, body { margin: 0; padding: 0; overflow: hidden; background: #17192B; }
+#renderCanvas { width: 100vw; height: 100vh; touch-action: none; }
+#painel {
+position: absolute; top: 20px; left: 20px;
+font-family: Arial, sans-serif; color: white;
+background: rgba(0,0,0,0.55); padding: 16px 22px; border-radius: 8px;
+min-width: 240px;
+}
+#valor { font-size: 40px; font-weight: bold; }
+#status, #estado, #contador { font-size: 15px; opacity: 0.85; margin-top: 4px; }
+#botoes { margin-top: 14px; display: flex; gap: 8px; }
+button {
+padding: 8px 14px; border: none; border-radius: 5px; font-weight: bold;
+font-size: 13px; cursor: pointer;
+}
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+#btnStart { background: #2ecc71; color: #0a2410; }
+#btnStop { background: #e74c3c; color: #2b0705; }
+#btnReset { background: #f5a623; color: #2b1c00; }
+</style>
+</head>
+<body>
+<canvas id="renderCanvas"></canvas>
+<div id="painel">
+<div id="valor">--</div>
+<div id="status">Aguardando início...</div>
+<div id="estado">Estado: PARADO</div>
+<div id="contador">Alarmes desde o último reset: 0</div>
+<div id="botoes">
+<button id="btnStart">START</button>
+<button id="btnStop" disabled>STOP</button>
+<button id="btnReset">RESET</button>
+</div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
