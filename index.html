@@ -1,43 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Painel de Controle — Sensor Virtual</title>
-<style>
-html, body { margin: 0; padding: 0; overflow: hidden; background: #17192B; }
-#renderCanvas { width: 100vw; height: 100vh; touch-action: none; }
-#painel {
-position: absolute; top: 20px; left: 20px;
-font-family: Arial, sans-serif; color: white;
-background: rgba(0,0,0,0.55); padding: 16px 22px; border-radius: 8px;
-min-width: 240px;
-}
-#valor { font-size: 40px; font-weight: bold; }
-#status, #estado, #contador { font-size: 15px; opacity: 0.85; margin-top: 4px; }
-#botoes { margin-top: 14px; display: flex; gap: 8px; }
-button {
-padding: 8px 14px; border: none; border-radius: 5px; font-weight: bold;
-font-size: 13px; cursor: pointer;
-}
-button:disabled { opacity: 0.35; cursor: not-allowed; }
-#btnStart { background: #2ecc71; color: #0a2410; }
-#btnStop { background: #e74c3c; color: #2b0705; }
-#btnReset { background: #f5a623; color: #2b1c00; }
-</style>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Aula 7 — Solução completa</title>
+  <style>
+    :root{font-family:Inter,Arial,sans-serif;color:#edf7ff;background:#08131d}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}#renderCanvas{width:100%;height:100%;display:block;touch-action:none}.painel{position:absolute;top:18px;left:18px;width:min(390px,calc(100% - 36px));padding:21px;border:1px solid #3b5870;border-radius:13px;background:rgba(8,19,29,.95);box-shadow:0 16px 45px #0008}h1{margin:0 0 4px;font-size:21px}.sub{margin:0 0 17px;color:#93aabc;font-size:13px}.linha{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #294052}.valor{font-weight:800;text-align:right;font-variant-numeric:tabular-nums}.controle{margin-top:17px;padding:14px;background:#102537;border-radius:9px}.controle label{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px}input[type=range]{width:100%;accent-color:#45a0ff}.escala{display:flex;justify-content:space-between;color:#8ea8ba;font-size:11px}.botoes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}button{padding:11px;border:0;border-radius:6px;font-weight:800;cursor:pointer}button:disabled{opacity:.35;cursor:not-allowed}#conectar{grid-column:1/-1;background:#398cff;color:#fff}#iniciar{background:#3bd17f;color:#082418}#parar{background:#f06b61;color:#300b08}#log{min-height:35px;margin:13px 0 0;color:#93aabc;font-size:12px;line-height:1.4}.ok{color:#5ddd9b}.erro{color:#ff7d75}.alerta{color:#ffcb65}
+  </style>
 </head>
 <body>
-<canvas id="renderCanvas"></canvas>
-<div id="painel">
-<div id="valor">--</div>
-<div id="status">Aguardando início...</div>
-<div id="estado">Estado: PARADO</div>
-<div id="contador">Alarmes desde o último reset: 0</div>
-<div id="botoes">
-<button id="btnStart">START</button>
-<button id="btnStop" disabled>STOP</button>
-<button id="btnReset">RESET</button>
-</div>
-</div>
-<script type="module" src="/src/main.js"></script>
-</body>
-</html>
+  <canvas id="renderCanvas"></canvas>
+  <section class="painel">
+    <h1>Comissionamento do LED</h1><p class="sub">Solução completa • Web Serial • Arduino</p>
+    <div class="linha"><span>Porta</span><span id="porta" class="valor alerta">DESCONECTADA</span></div>
+    <div class="linha"><span>Estado do pisca</span><span id="modo" class="valor">AGUARDANDO</span></div>
+    <div class="linha"><span>LED informado</span><span id="estado" class="valor">APAGADO</span></div>
+    <div class="linha"><span>Período confirmado</span><span id="confirmado" class="valor">—</span></div>
+    <div class="linha"><span>Frequência do pisca</span><span id="frequencia" class="valor">1,00 Hz</span></div>
+    <div class="controle"><label for="intervalo"><span>Período solicitado</span><span id="intervaloValor">1000 ms</span></label><input id="intervalo" type="range" min="100" max="1000" step="100" value="1000" disabled><div class="escala"><span>100 ms</span><span>mais rápido ↔ mais lento</span><span>1000 ms</span></div></div>
+    <div class="botoes"><button id="conectar">CONECTAR ARDUINO</button><button id="iniciar" disabled>INICIAR</button><button id="parar" disabled>PARAR</button></div>
+    <p id="log">Use Chrome ou Edge e conecte o Arduino pela USB.</p>
+  </section>
+  <script type="module" src="/src/main.js"></script>
+</body></html>
